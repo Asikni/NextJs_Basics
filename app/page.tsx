@@ -1,3 +1,11 @@
+function Number(){
+  return(
+    <div>number 1</div>
+  )
+}
+
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+  return (<h1>Hello, Next.js!
+    <h1>{Number()}</h1>
+  </h1>)
 }
