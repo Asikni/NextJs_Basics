@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav>Some of the fruits</nav>
+        <nav style={{border:"1px solid green"}}>Header</nav>
         {children}
-        <div>Fruitssssss</div>
+        <footer  style={{border:"1px solid blue"}}>Footer</footer>
       </body>
     </html>
   );
