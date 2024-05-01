@@ -1,6 +1,7 @@
 "use client";
 
-import {useState } from "react";
+import { useAppContext } from "@/app/context";
+
 export default function ComplexDashboardLayout({
   children, //children is page.tsx
   users,
@@ -14,20 +15,26 @@ export default function ComplexDashboardLayout({
   notifications: React.ReactNode;
   login: React.ReactNode;
 }) {
-// const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const isLoggedIn = true
-  return isLoggedIn ? (
-    <div>
-      <h1>{children}</h1>
-      <div style={{ display: "flex" }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div>{users}</div>
-          <div>{revenue}</div>
+  const { isLoggedIn, setIsLoggedIn } = useAppContext();
+  console.log(isLoggedIn);
+
+  return (
+    <>
+      {isLoggedIn ? (
+        <div>
+          <h1>{children}</h1>
+          <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div>{users}</div>
+              <div>{revenue}</div>
+            </div>
+            <div style={{ display: "flex", flex: 1 }}>{notifications}</div>
+            <div style={{ display: "flex", flex: 1 }}>
+              <button onClick={()=> setIsLoggedIn(false)}>Logout</button>
+            </div>
+          </div>
         </div>
-        <div style={{ display: "flex", flex: 1 }}>{notifications}</div>
-      </div>
-    </div>
-  ) : (
-    login
+      ) : login}
+    </>
   );
 }
