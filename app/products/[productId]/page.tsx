@@ -38,24 +38,47 @@ export default function ProductDetails({
     <h1>
       {" "}
       Details about the product {params.productId}
-      {typeof(params.productId)}
+ 
       <ul>
-        {clothes.map((cloth, index) =>
-        
-          index === parseInt(params.productId) ? (
-            <li key={index}>
-              <div>
+        {clothes.map(
+          (
+            cloth,
+            index //do with filter
+          ) =>
+            index+1  === parseInt(params.productId) ? (
+              <div key={index}>
                 <p>Type: {cloth.type}</p>
                 <p>Color: {cloth.color}</p>
                 <p>Size: {cloth.size}</p>
                 <p>Brand: {cloth.brand}</p>
                 <p>Price: {cloth.price}</p>
-                
               </div>
-            </li>
-          ) : null
+            ) : null
         )}
       </ul>
     </h1>
   );
 }
+
+
+// export default function ProductDetails({
+//   params,
+// }: {
+//   params: { productId: string };
+// }) {
+//   const dress: cloth = clothes.find((c) => c.index === params.productId)!;
+//   return (
+//     <h1>
+//       {" "}
+//       Details about the product {params.productId}
+//       <p>Type: {dress.type}</p>
+//       <p>Color: P{dress.color}</p>
+//       <p>Size: {dress.size}</p>
+//       <p>Brand: {dress.brand}</p>
+//       <p>Price: {dress.price}</p>
+//     </h1>
+//   );
+// }
+
+
+//can be done like this also...if we have index/id in our data

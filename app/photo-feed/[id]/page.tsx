@@ -7,6 +7,7 @@ export default function PhotoPage({
   params: { id: string };
 }) {
   const photo: WonderImage = wondersImages.find((p) => p.id === id)!;
+  //When ! is placed after an expression, it tells the compiler that the value of that expression will not be null or undefined.
   return (
     <div className="container mx-auto my-10">
       <div className="w-1/2 mx-auto">
