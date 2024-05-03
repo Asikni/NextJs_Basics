@@ -1,7 +1,18 @@
 import { comments } from "./data";
+import { type NextRequest } from "next/server";
 
-export async function GET() {
-  return Response.json(comments);
+export async function GET(request: NextRequest) {
+  //nextrequest object provides methods to handle query parameters
+  const searchParams = request.nextUrl.searchParams; //access all query parameters in the url
+  console.log("the search params are:", searchParams);
+  const query = searchParams.get("query");  
+  const check = searchParams.has("number");
+  console.log("check is there", check)
+  console.log(query)  
+  const filteredComments = query
+    ? comments.filter((comment) => comment.text.includes(query))
+    : comments;
+  return Response.json(filteredComments);
 }
 
 export async function POST(request: Request) {

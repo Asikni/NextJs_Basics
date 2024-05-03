@@ -1,6 +1,8 @@
 import { comments } from "../data";
 //find a comment
-export async function POST(
+
+import { redirect } from "next/navigation";
+export async function GET(
   _request: Request,
   {
     params,
@@ -8,6 +10,9 @@ export async function POST(
     params: { id: string };
   }
 ) {
+  if (parseInt(params.id) > comments.length) {
+    redirect("/b_comments");
+  }
   const comment = comments.find(
     (comment) => comment.id === parseInt(params.id)
   );
